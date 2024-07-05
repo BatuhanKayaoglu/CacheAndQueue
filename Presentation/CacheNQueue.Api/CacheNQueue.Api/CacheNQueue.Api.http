@@ -1,0 +1,6 @@
+@CacheNQueue.Api_HostAddress = http://localhost:44358
+
+GET {{CacheNQueue.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
