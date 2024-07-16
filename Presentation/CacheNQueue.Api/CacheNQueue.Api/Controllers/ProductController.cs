@@ -23,7 +23,7 @@ namespace CacheNQueue.Api.Controllers
         {
             this.mediator = mediator;
         }
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Add(CreateProductCommandReques reques)
         {
             CreateProductCommandResponse response = await mediator.Send(reques);
@@ -31,10 +31,9 @@ namespace CacheNQueue.Api.Controllers
         }
 
 
-        [HttpPut("DeleteId")]
+        [HttpDelete("DeleteId")]
         public async Task<IActionResult> Delete(DeleteProductCommandRequest request)
         {
-
             DeleteProductCommandResponse response = await mediator.Send(request);
             return Ok(response);
         }
@@ -46,15 +45,16 @@ namespace CacheNQueue.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Gett")]
-        public async Task<IActionResult> GettAll()
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
         {
             GettAllProductQueryRequest request = new GettAllProductQueryRequest();
-
             return Ok(await mediator.Send(request));
         }
+
+
         [HttpGet("Id")]
-        public async Task<IActionResult> GettById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             GetByIdProductQueryRequest request1 = new() { Id = id };
             GetByIdProductQueryResponse response = await mediator.Send(request1);

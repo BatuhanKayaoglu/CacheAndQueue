@@ -25,7 +25,6 @@ namespace CacheNQueue.Application.Med.ProductMed.Add
 
         public async Task<CreateProductCommandResponse> Handle(CreateProductCommandReques request, CancellationToken cancellationToken)
         {
-
             var product = CreateProductCommandReques.Map(request);
             await productRepository.AddAsync(product, cancellationToken);
             await _cacheService.SetAsync(product, cancellationToken);

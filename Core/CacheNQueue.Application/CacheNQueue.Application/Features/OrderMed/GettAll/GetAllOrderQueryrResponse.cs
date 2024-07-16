@@ -13,16 +13,12 @@ namespace CacheNQueue.Application.Features.OrderMed
     {
         public Order order { get; set; }
 
-
-
         public static GetAllOrderQueryrResponse Map(Order order)
         {
             return new GetAllOrderQueryrResponse
             {
                 order = order,
             };
-
-
         }
     }
 }

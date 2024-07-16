@@ -34,9 +34,6 @@ namespace CacheNQueue.Infrastructure.RabitMQ
             var body = Encoding.UTF8.GetBytes(Message);
 
             channel.BasicPublish(string.Empty, QueueKey, null, body);
-
-
-
         }
     }
 }

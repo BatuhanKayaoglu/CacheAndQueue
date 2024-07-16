@@ -19,15 +19,18 @@ namespace CacheNQueue.Api.Controllers
             this.mediator = mediator;
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Add(CreateOrderCommandRequest reques)
-        {
-            CreateOrderCommandResponse response = await mediator.Send(reques);
-            return Ok(response);
 
+        [HttpPost]
+        [Route("Add")]
+        public async Task<IActionResult> Add(CreateOrderCommandRequest request)
+        {
+            CreateOrderCommandResponse response = await mediator.Send(request);
+            return Ok(response);
         }
+
+
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GettById()
+        public async Task<IActionResult> GetAll()
         {
             GetAllOrderQueryRequest request = new GetAllOrderQueryRequest();
             List<GetAllOrderQueryrResponse> response = await mediator.Send(request);
